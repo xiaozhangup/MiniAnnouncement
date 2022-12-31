@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61038af9-58f7-425f-a486-80fb50187278" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/xiaozhangup/minian/ConfigReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/xiaozhangup/minian/task/ActionBarTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/xiaozhangup/minian/task/BossBarTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/xiaozhangup/minian/task/MessageTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/xiaozhangup/minian/task/TitleTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/actionbars.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/bossbars.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/messages.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/titles.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/xiaozhangup/minian/MiniAnnouncement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/xiaozhangup/minian/MiniAnnouncement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/xiaozhangup/minian/Runner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
-    </list>
+    <list default="true" id="61038af9-58f7-425f-a486-80fb50187278" name="变更" comment="update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -92,8 +74,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1672460422339</updated>
-      <workItem from="1672473425350" duration="4994000" />
+      <workItem from="1672473425350" duration="5364000" />
     </task>
+    <task id="LOCAL-00001" summary="update">
+      <created>1672478797622</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1672478797622</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,5 +99,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>
