@@ -54,7 +54,8 @@ public final class MiniAnnouncement extends JavaPlugin {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("mareload")) {
             if (sender.isOp()) {
-                ConfigReader.loadConfig();
+                getServer().getPluginManager().disablePlugin(this);
+                getServer().getPluginManager().enablePlugin(this);
                 sender.sendMessage("插件已成功重载");
             }
         }

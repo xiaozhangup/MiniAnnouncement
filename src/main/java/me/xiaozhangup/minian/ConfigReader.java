@@ -106,7 +106,7 @@ public class ConfigReader {
         public static List<String> DISABLE_WORLDS;
 
         public static void loadTitles() {
-            final YamlConfiguration config = getConfig("messages.yml");
+            final YamlConfiguration config = getConfig("titles.yml");
             ENABLE = config.getBoolean("enable");
             DELAY = config.getLong("delay");
             FADE_IN = config.getLong("fadeIn");
