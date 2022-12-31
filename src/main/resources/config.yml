@@ -1,8 +1,0 @@
-enable: true
-delay: 1200 #公告的间隔
-prefix: "<dark_gray>[<color:#abe6ff>公告</color>]</dark_gray> " #公告的前缀,如果不需要你可以直接留空,也就是""
-messages: #公告的内容,一行一个
-  - "<newline><white>多行文本当然也受到支持!<newline>这样就能够另起一行了</white>"
-  - "<yellow>这是普通的颜色公告内容</yellow>"
-  - "<rainbow>你可以发送彩虹字体,就像这样</rainbow>"
-  - "<red>除此之外,你可以借助MiniMessage的功能实现更多的内容!<newline><gray>在线编辑预览 https://webui.adventure.kyori.net/</gray><newline><gray>高级使用方法 https://docs.adventure.kyori.net/minimessage/format.html</gray></red>"
