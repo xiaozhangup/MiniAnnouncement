@@ -1,0 +1,8 @@
+name: MiniAnnouncement
+version: 1.0
+api-version: 1.13
+main: me.xiaozhangup.minian.MiniAnnouncement
+authors:
+  - xiaozhangup
+commands:
+  mareload:
