@@ -1,5 +1,5 @@
 enable: false
-delay: 1200 #公告的间隔
+delay: 60 #公告的间隔
 fadeIn: 500 #淡入，毫秒
 stayOnScreen: 3000 #停留在屏幕上的时间,毫秒
 fadeOut: 500 #淡出,毫秒

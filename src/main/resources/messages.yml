@@ -1,5 +1,5 @@
 enable: true
-delay: 1200 #公告的间隔
+delay: 60 #公告的间隔
 prefix: "<dark_gray>[<color:#abe6ff>公告</color>]</dark_gray> " #公告的前缀,如果不需要你可以直接留空,也就是""
 messages: #公告的内容,一行一个
   - "<newline><white>多行文本当然也受到支持!<newline>这样就能够另起一行了</white>"
