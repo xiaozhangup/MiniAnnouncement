@@ -1,46 +1,30 @@
 package me.xiaozhangup.minian;
 
+import me.xiaozhangup.minian.task.ActionBarTask;
+import me.xiaozhangup.minian.task.BossBarTask;
+import me.xiaozhangup.minian.task.MessageTask;
+import me.xiaozhangup.minian.task.TitleTask;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
-import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.Plugin;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.ArrayList;
-import java.util.List;
+public final class MiniAnnouncement extends JavaPlugin {
 
-public class MiniAnnouncement extends JavaPlugin {
-
-    public static MiniMessage mm = MiniMessage.miniMessage();
-    public static Plugin plugin;
-    public static List<Component> messages = new ArrayList<>();
-    public static Long time = 1200L;
-    public static Component prefix = Component.text("");
-    public static Component reload = mm.deserialize("<white>插件已成功重载</white>");
+    private static MiniAnnouncement instance;
     private static BukkitAudiences adventure;
-
-    public static BukkitAudiences adventure() {
-        if (adventure == null) {
-            throw new IllegalStateException("Tried to access Adventure when the plugin was disabled!");
-        }
-        return adventure;
-    }
+    private static final MiniMessage miniMessage = MiniMessage.miniMessage();
 
     @Override
     public void onEnable() {
-        plugin = this;
-        config();
+        instance = this;
         adventure = BukkitAudiences.create(this);
-        Bukkit.getScheduler().runTaskTimerAsynchronously(this, new Runner(), 0L, time);
-        Bukkit.getPluginCommand("mareload").setExecutor((sender, command, label, args) -> {
-            if (sender.isOp()) {
-                adventure().sender(sender).sendMessage(prefix.append(reload));
-                Bukkit.getPluginManager().disablePlugin(this);
-                Bukkit.getPluginManager().enablePlugin(this);
-            }
-            return true;
-        });
+        ConfigReader.loadConfig();
+        new ActionBarTask();
+        new BossBarTask();
+        new MessageTask();
+        new TitleTask();
     }
 
     @Override
@@ -51,15 +35,29 @@ public class MiniAnnouncement extends JavaPlugin {
         }
     }
 
-    public void config() {
-        saveDefaultConfig();
-        reloadConfig();
-        messages.clear();
+    public static BukkitAudiences getAdventure() {
+        if (adventure == null) {
+            throw new IllegalStateException("Tried to access Adventure when the plugin was disabled!");
+        }
+        return adventure;
+    }
 
-        time = getConfig().getLong("delay");
-        prefix = mm.deserialize(getConfig().getString("prefix"));
-        getConfig().getStringList("messages").forEach(s -> {
-            messages.add(prefix.append(mm.deserialize(s)));
-        });
+    public static MiniMessage getMiniMessage() {
+        return miniMessage;
+    }
+
+    public static MiniAnnouncement getInstance() {
+        return instance;
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (command.getName().equalsIgnoreCase("mareload")) {
+            if (sender.isOp()) {
+                ConfigReader.loadConfig();
+                sender.sendMessage("插件已成功重载");
+            }
+        }
+        return true;
     }
 }

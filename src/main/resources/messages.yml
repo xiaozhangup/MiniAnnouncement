@@ -6,3 +6,5 @@ messages: #公告的内容,一行一个
   - "<yellow>这是普通的颜色公告内容</yellow>"
   - "<rainbow>你可以发送彩虹字体,就像这样</rainbow>"
   - "<red>除此之外,你可以借助MiniMessage的功能实现更多的内容!<newline><gray>在线编辑预览 https://webui.adventure.kyori.net/</gray><newline><gray>高级使用方法 https://docs.adventure.kyori.net/minimessage/format.html</gray></red>"
+disableWorlds:
+  - "yourWorldHere"

@@ -1,0 +1,13 @@
+enable: false
+delay: 1200 #公告的间隔
+fadeIn: 500 #淡入，毫秒
+stayOnScreen: 3000 #停留在屏幕上的时间,毫秒
+fadeOut: 500 #淡出,毫秒
+prefix: "<dark_gray>[<color:#abe6ff>公告</color>]</dark_gray> " #公告的前缀,如果不需要你可以直接留空,也就是""
+messages: #公告的内容,一行一个
+  - title: "<yellow>这是第一个普通的颜色公告内容</yellow>"
+    subtitle: "<rainbow>你可以发送彩虹字体,就像这样</rainbow>"
+  - title: "<yellow>这是第二个普通的颜色公告内容</yellow>"
+    subtitle: "<rainbow>你可以发送彩虹字体,就像这样</rainbow>"
+disableWorlds:
+  - "yourWorldHere"
