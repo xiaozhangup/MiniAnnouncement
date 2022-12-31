@@ -5,7 +5,7 @@ plugins {
 
 description = "me.xiaozhangup.minian"
 group = "me.xiaozhangup.minian"
-version = "1.1-SNAPSHOT"
+version = "1.1"
 
 repositories {
     mavenCentral()
