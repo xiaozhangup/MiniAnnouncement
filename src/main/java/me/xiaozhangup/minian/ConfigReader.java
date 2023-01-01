@@ -1,13 +1,11 @@
 package me.xiaozhangup.minian;
 
-import net.kyori.adventure.text.Component;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * MiniAnnouncements
@@ -40,16 +38,16 @@ public class ConfigReader {
 
         public static boolean ENABLE;
         public static long DELAY;
-        public static Component PREFIX;
-        public static List<Component> MESSAGES;
+        public static String PREFIX;
+        public static List<String> MESSAGES;
         public static List<String> DISABLE_WORLDS;
 
         public static void loadActionBars() {
             final YamlConfiguration config = getConfig("actionbars.yml");
             ENABLE = config.getBoolean("enable");
             DELAY = config.getLong("delay");
-            PREFIX = MiniAnnouncement.getMiniMessage().deserialize(config.getString("prefix", ""));
-            MESSAGES = config.getStringList("messages").stream().map(MiniAnnouncement.getMiniMessage()::deserialize).collect(Collectors.toList());
+            PREFIX = config.getString("prefix", "");
+            MESSAGES = config.getStringList("messages");
             DISABLE_WORLDS = config.getStringList("disableWorlds");
         }
     }
@@ -60,8 +58,8 @@ public class ConfigReader {
         public static long DELAY;
         public static long STAY;
         public static String COLOR;
-        public static Component PREFIX;
-        public static List<Component> MESSAGES;
+        public static String  PREFIX;
+        public static List<String> MESSAGES;
         public static List<String> DISABLE_WORLDS;
 
         public static void loadBossBars() {
@@ -70,8 +68,8 @@ public class ConfigReader {
             DELAY = config.getLong("delay");
             STAY = config.getLong("stay");
             COLOR = config.getString("color");
-            PREFIX = MiniAnnouncement.getMiniMessage().deserialize(config.getString("prefix", ""));
-            MESSAGES = config.getStringList("messages").stream().map(MiniAnnouncement.getMiniMessage()::deserialize).collect(Collectors.toList());
+            PREFIX = config.getString("prefix", "");
+            MESSAGES = config.getStringList("messages");
             DISABLE_WORLDS = config.getStringList("disableWorlds");
         }
     }
@@ -80,16 +78,16 @@ public class ConfigReader {
 
         public static boolean ENABLE;
         public static long DELAY;
-        public static Component PREFIX;
-        public static List<Component> MESSAGES;
+        public static String PREFIX;
+        public static List<String> MESSAGES;
         public static List<String> DISABLE_WORLDS;
 
         public static void loadMessages() {
             final YamlConfiguration config = getConfig("messages.yml");
             ENABLE = config.getBoolean("enable");
             DELAY = config.getLong("delay");
-            PREFIX = MiniAnnouncement.getMiniMessage().deserialize(config.getString("prefix", ""));
-            MESSAGES = config.getStringList("messages").stream().map(MiniAnnouncement.getMiniMessage()::deserialize).collect(Collectors.toList());
+            PREFIX = config.getString("prefix", "");
+            MESSAGES = config.getStringList("messages");
             DISABLE_WORLDS = config.getStringList("disableWorlds");
         }
     }
@@ -101,8 +99,8 @@ public class ConfigReader {
         public static long FADE_IN;
         public static long STAY_ON_SCREEN;
         public static long FADE_OUT;
-        public static Component PREFIX;
-        public static Map<Component, Component> MESSAGES = new HashMap<>();
+        public static String PREFIX;
+        public static Map<String, String> MESSAGES = new HashMap<>();
         public static List<String> DISABLE_WORLDS;
 
         public static void loadTitles() {
@@ -112,14 +110,17 @@ public class ConfigReader {
             FADE_IN = config.getLong("fadeIn");
             STAY_ON_SCREEN = config.getLong("stayOnScreen");
             FADE_OUT = config.getLong("fadeOut");
-            PREFIX = MiniAnnouncement.getMiniMessage().deserialize(config.getString("prefix", ""));
+            PREFIX = config.getString("prefix", "");
             MESSAGES.clear();
             for (Map<?, ?> map : config.getMapList("messages")) {
-                if (!map.containsKey("title") || !map.containsKey("subtitle")) {
-                    continue;
+                String title = "";
+                String subtitle = "";
+                if (map.containsKey("title")) {
+                    title = (String) map.get("title");
                 }
-                final Component title = MiniAnnouncement.getMiniMessage().deserialize((String) map.get("title"));
-                final Component subtitle = MiniAnnouncement.getMiniMessage().deserialize((String) map.get("subtitle"));
+                if (map.containsKey("subtitle")) {
+                    subtitle = (String) map.get("subtitle");
+                }
                 MESSAGES.put(title, subtitle);
             }
             DISABLE_WORLDS = config.getStringList("disableWorlds");

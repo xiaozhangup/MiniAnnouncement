@@ -1,14 +1,18 @@
 package me.xiaozhangup.minian;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import me.xiaozhangup.minian.task.ActionBarTask;
 import me.xiaozhangup.minian.task.BossBarTask;
 import me.xiaozhangup.minian.task.MessageTask;
 import me.xiaozhangup.minian.task.TitleTask;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 public final class MiniAnnouncement extends JavaPlugin {
 
@@ -42,10 +46,6 @@ public final class MiniAnnouncement extends JavaPlugin {
         return adventure;
     }
 
-    public static MiniMessage getMiniMessage() {
-        return miniMessage;
-    }
-
     public static MiniAnnouncement getInstance() {
         return instance;
     }
@@ -60,5 +60,14 @@ public final class MiniAnnouncement extends JavaPlugin {
             }
         }
         return true;
+    }
+
+    @NotNull
+    public static Component setPlaceholders(@NotNull Player player, @NotNull String origin) {
+        String result = origin;
+        if (instance.getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            result = PlaceholderAPI.setPlaceholders(player, result);
+        }
+        return miniMessage.deserialize(result);
     }
 }

@@ -23,7 +23,7 @@ public class MessageTask {
                 if (ConfigReader.Message.ENABLE) {
                     Bukkit.getOnlinePlayers().stream().filter(player -> !ConfigReader.Message.DISABLE_WORLDS.contains(player.getWorld().getName())).forEach(player -> {
                         MiniAnnouncement.getAdventure().player(player).sendMessage(
-                                ConfigReader.Message.PREFIX.append(ConfigReader.Message.MESSAGES.get(ThreadLocalRandom.current().nextInt(ConfigReader.Message.MESSAGES.size())))
+                                MiniAnnouncement.setPlaceholders(player, ConfigReader.Message.PREFIX + ConfigReader.Message.MESSAGES.get(ThreadLocalRandom.current().nextInt(ConfigReader.Message.MESSAGES.size())))
                         );
                     });
                 }

@@ -28,9 +28,11 @@ public class TitleTask {
                 if (ConfigReader.Title.ENABLE) {
                     Bukkit.getOnlinePlayers().stream().filter(player -> !ConfigReader.Title.DISABLE_WORLDS.contains(player.getWorld().getName())).forEach(player -> {
                         final int index = ThreadLocalRandom.current().nextInt(ConfigReader.Title.MESSAGES.size());
-                        final Map.Entry<Component, Component> message = new ArrayList<>(ConfigReader.Title.MESSAGES.entrySet()).get(index);
+                        final Map.Entry<String, String> message = new ArrayList<>(ConfigReader.Title.MESSAGES.entrySet()).get(index);
+                        final Component mainTitle = MiniAnnouncement.setPlaceholders(player, ConfigReader.Title.PREFIX + message.getKey());
+                        final Component subtitle = MiniAnnouncement.setPlaceholders(player, ConfigReader.Title.PREFIX + message.getValue());
                         final Title.Times times = Title.Times.times(Duration.ofMillis(ConfigReader.Title.FADE_IN), Duration.ofMillis(ConfigReader.Title.STAY_ON_SCREEN), Duration.ofMillis(ConfigReader.Title.FADE_OUT));
-                        final Title title = Title.title(message.getKey(), message.getValue(), times);
+                        final Title title = Title.title(mainTitle, subtitle, times);
                         MiniAnnouncement.getAdventure().player(player).showTitle(title);
                     });
                 }

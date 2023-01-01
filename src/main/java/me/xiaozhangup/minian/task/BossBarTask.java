@@ -24,7 +24,7 @@ public class BossBarTask {
                 if (ConfigReader.BossBar.ENABLE) {
                     Bukkit.getOnlinePlayers().stream().filter(player -> !ConfigReader.BossBar.DISABLE_WORLDS.contains(player.getWorld().getName())).forEach(player -> {
                         final BossBar bossBar = BossBar.bossBar(
-                                ConfigReader.BossBar.PREFIX.append(ConfigReader.BossBar.MESSAGES.get(ThreadLocalRandom.current().nextInt(ConfigReader.BossBar.MESSAGES.size()))),
+                                MiniAnnouncement.setPlaceholders(player, ConfigReader.BossBar.PREFIX + ConfigReader.BossBar.MESSAGES.get(ThreadLocalRandom.current().nextInt(ConfigReader.BossBar.MESSAGES.size()))),
                                 1,
                                 BossBar.Color.valueOf(ConfigReader.BossBar.COLOR),
                                 BossBar.Overlay.NOTCHED_20

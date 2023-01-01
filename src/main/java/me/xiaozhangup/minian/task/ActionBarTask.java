@@ -23,7 +23,7 @@ public class ActionBarTask {
                 if (ConfigReader.ActionBar.ENABLE) {
                     Bukkit.getOnlinePlayers().stream().filter(player -> !ConfigReader.ActionBar.DISABLE_WORLDS.contains(player.getWorld().getName())).forEach(player -> {
                         MiniAnnouncement.getAdventure().player(player).sendActionBar(
-                                ConfigReader.ActionBar.PREFIX.append(ConfigReader.ActionBar.MESSAGES.get(ThreadLocalRandom.current().nextInt(ConfigReader.ActionBar.MESSAGES.size())))
+                                MiniAnnouncement.setPlaceholders(player, ConfigReader.ActionBar.PREFIX + ConfigReader.ActionBar.MESSAGES.get(ThreadLocalRandom.current().nextInt(ConfigReader.ActionBar.MESSAGES.size())))
                         );
                     });
                 }
