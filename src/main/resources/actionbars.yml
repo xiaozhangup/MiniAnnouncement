@@ -6,3 +6,6 @@ messages: #公告的内容,一行一个
   - "<rainbow>你可以发送彩虹字体,就像这样</rainbow>"
 disableWorlds: #关闭的世界,玩家所处此世界时不显示该自动公告
   - "yourWorldHere"
+time:
+  - "12:50:00"
+  - "23:13:00"

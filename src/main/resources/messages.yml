@@ -9,3 +9,6 @@ messages: #公告的内容,一行一个
   - "<red>除此之外,你可以借助MiniMessage的功能实现更多的内容!<newline><gray>在线编辑预览 https://webui.adventure.kyori.net/</gray><newline><gray>高级使用方法 https://docs.adventure.kyori.net/minimessage/format.html</gray></red>"
 disableWorlds: #关闭的世界,玩家所处此世界时不显示该自动公告
   - "yourWorldHere"
+time:
+  - "12:50:00"
+  - "23:13:00"

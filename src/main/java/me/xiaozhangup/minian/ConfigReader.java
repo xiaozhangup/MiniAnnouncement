@@ -41,6 +41,7 @@ public class ConfigReader {
         public static String PREFIX;
         public static List<String> MESSAGES;
         public static List<String> DISABLE_WORLDS;
+        public static List<String> TIME;
 
         public static void loadActionBars() {
             final YamlConfiguration config = getConfig("actionbars.yml");
@@ -49,6 +50,7 @@ public class ConfigReader {
             PREFIX = config.getString("prefix", "");
             MESSAGES = config.getStringList("messages");
             DISABLE_WORLDS = config.getStringList("disableWorlds");
+            TIME = config.getStringList("time");
         }
     }
 
@@ -61,6 +63,7 @@ public class ConfigReader {
         public static String  PREFIX;
         public static List<String> MESSAGES;
         public static List<String> DISABLE_WORLDS;
+        public static List<String> TIME;
 
         public static void loadBossBars() {
             final YamlConfiguration config = getConfig("bossbars.yml");
@@ -71,6 +74,7 @@ public class ConfigReader {
             PREFIX = config.getString("prefix", "");
             MESSAGES = config.getStringList("messages");
             DISABLE_WORLDS = config.getStringList("disableWorlds");
+            TIME = config.getStringList("time");
         }
     }
 
@@ -81,6 +85,7 @@ public class ConfigReader {
         public static String PREFIX;
         public static List<String> MESSAGES;
         public static List<String> DISABLE_WORLDS;
+        public static List<String> TIME;
 
         public static void loadMessages() {
             final YamlConfiguration config = getConfig("messages.yml");
@@ -89,6 +94,7 @@ public class ConfigReader {
             PREFIX = config.getString("prefix", "");
             MESSAGES = config.getStringList("messages");
             DISABLE_WORLDS = config.getStringList("disableWorlds");
+            TIME = config.getStringList("time");
         }
     }
 
@@ -102,6 +108,7 @@ public class ConfigReader {
         public static String PREFIX;
         public static Map<String, String> MESSAGES = new HashMap<>();
         public static List<String> DISABLE_WORLDS;
+        public static List<String> TIME;
 
         public static void loadTitles() {
             final YamlConfiguration config = getConfig("titles.yml");
@@ -124,6 +131,7 @@ public class ConfigReader {
                 MESSAGES.put(title, subtitle);
             }
             DISABLE_WORLDS = config.getStringList("disableWorlds");
+            TIME = config.getStringList("time");
         }
     }
 }
