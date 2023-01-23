@@ -1,6 +1,7 @@
 package me.xiaozhangup.minian;
 
 import me.clip.placeholderapi.PlaceholderAPI;
+import me.xiaozhangup.minian.service.Metrics;
 import me.xiaozhangup.minian.task.ActionBarTask;
 import me.xiaozhangup.minian.task.BossBarTask;
 import me.xiaozhangup.minian.task.MessageTask;
@@ -29,6 +30,7 @@ public final class MiniAnnouncement extends JavaPlugin {
         new BossBarTask();
         new MessageTask();
         new TitleTask();
+        new Metrics(this, 17243);
     }
 
     @Override
