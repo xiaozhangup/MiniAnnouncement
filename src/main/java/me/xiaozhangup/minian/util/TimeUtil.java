@@ -12,7 +12,9 @@ import java.util.Date;
  */
 public class TimeUtil {
 
+    private static final SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+
     public static String getNow() {
-        return new SimpleDateFormat("HH:mm:ss").format(new Date());
+        return format.format(new Date());
     }
 }
