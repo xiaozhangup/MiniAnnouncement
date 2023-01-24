@@ -20,14 +20,16 @@ import java.util.concurrent.ThreadLocalRandom;
 public class ActionBarTask {
 
     public ActionBarTask() {
-        // 普通的 Interval Task
         for (Map.Entry<String, ActionBarMessage> entry : ActionBarConfig.DATA.entrySet()) {
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    send(entry.getKey(), entry.getValue());
-                }
-            }.runTaskTimerAsynchronously(MiniAnnouncement.getInstance(), 0L, entry.getValue().getDelay() * 20L);
+            // 普通的 Interval Task
+            if (entry.getValue().getDelay() != -1) {
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        send(entry.getKey(), entry.getValue());
+                    }
+                }.runTaskTimerAsynchronously(MiniAnnouncement.getInstance(), 0L, entry.getValue().getDelay() * 20L);
+            }
 
             // 定时任务
             new BukkitRunnable() {

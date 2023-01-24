@@ -22,12 +22,14 @@ public class MessageTask {
     public MessageTask() {
         for (Map.Entry<String, Message> entry : MessageConfig.DATA.entrySet()) {
             // 普通的 Interval Task
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    send(entry.getKey(), entry.getValue());
-                }
-            }.runTaskTimerAsynchronously(MiniAnnouncement.getInstance(), 0L, entry.getValue().getDelay() * 20L);
+            if (entry.getValue().getDelay() != -1) {
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        send(entry.getKey(), entry.getValue());
+                    }
+                }.runTaskTimerAsynchronously(MiniAnnouncement.getInstance(), 0L, entry.getValue().getDelay() * 20L);
+            }
 
             // 定时任务
             new BukkitRunnable() {

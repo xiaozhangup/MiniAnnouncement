@@ -23,12 +23,14 @@ public class BossBarTask {
     public BossBarTask() {
         for (Map.Entry<String, BossBarMessage> entry : BossBarConfig.DATA.entrySet()) {
             // 普通的 Interval Task
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    send(entry.getKey(), entry.getValue());
-                }
-            }.runTaskTimerAsynchronously(MiniAnnouncement.getInstance(), 0L, entry.getValue().getDelay() * 20L);
+            if (entry.getValue().getDelay() != -1) {
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        send(entry.getKey(), entry.getValue());
+                    }
+                }.runTaskTimerAsynchronously(MiniAnnouncement.getInstance(), 0L, entry.getValue().getDelay() * 20L);
+            }
 
             // 定时任务
             new BukkitRunnable() {
