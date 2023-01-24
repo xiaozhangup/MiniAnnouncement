@@ -36,7 +36,7 @@ public class BossBarConfig {
             for (Map<?, ?> map : config.getMapList("messages")) {
                 final String message = (String) map.get("message");
                 final String color = (String) map.get("color");
-                final long stay = (long) config.getLong("stay");
+                final long stay = Long.parseLong(map.get("stay").toString());
                 messages.add(new BossBar(color, stay, message));
             }
             final String prefix = config.getString("prefix", "");
