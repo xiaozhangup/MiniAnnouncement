@@ -5,7 +5,7 @@ plugins {
 
 description = "me.xiaozhangup.minian"
 group = "me.xiaozhangup.minian"
-version = "1.3"
+version = "1.4"
 
 repositories {
     mavenCentral()
@@ -22,4 +22,7 @@ dependencies {
     implementation("net.kyori:adventure-text-minimessage:4.12.0")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+
+    compileOnly("org.projectlombok:lombok:1.18.24")
+    annotationProcessor("org.projectlombok:lombok:1.18.24")
 }

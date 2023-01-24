@@ -1,11 +1,12 @@
 enable: false #是否开启,默认关闭
 delay: 60 #公告的间隔,秒
 prefix: "<dark_gray>[<color:#abe6ff>公告</color>]</dark_gray> " #公告的前缀,如果不需要你可以直接留空,也就是""
-messages: #公告的内容,一行一个
-  - "<yellow>这是普通的颜色公告内容</yellow>"
-  - "<rainbow>你可以发送彩虹字体,就像这样</rainbow>"
-disableWorlds: #关闭的世界,玩家所处此世界时不显示该自动公告
-  - "yourWorldHere"
-time:
-  - "12:50:00"
-  - "23:13:00"
+messages:
+  - messages:
+      - "<yellow>这是普通的颜色公告内容</yellow>"
+      - "<rainbow>你可以发送彩虹字体,就像这样</rainbow>"
+    disableWorlds:
+      - "yourWorldHere"
+    time:
+      time:
+        - "12:50:00"
