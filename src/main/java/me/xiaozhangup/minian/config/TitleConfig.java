@@ -47,13 +47,13 @@ public class TitleConfig {
                     subtitle = (String) map.get("subtitle");
                 }
                 if (map.containsKey("fadeIn")) {
-                    fadeIn = (long) map.get("fadeIn");
+                    fadeIn = (long) ((Object) map.get("fadeIn"));
                 }
                 if (map.containsKey("stayOnScreen")) {
-                    stayOnScreen = (long) map.get("stayOnScreen");
+                    stayOnScreen = (long) ((Object) map.get("stayOnScreen"));
                 }
                 if (map.containsKey("fadeOut")) {
-                    fadeOut = (long) map.get("fadeOut");
+                    fadeOut = (long) ((Object) map.get("fadeOut"));
                 }
                 messages.add(new Title(title, subtitle, fadeIn, stayOnScreen, fadeOut));
             }
