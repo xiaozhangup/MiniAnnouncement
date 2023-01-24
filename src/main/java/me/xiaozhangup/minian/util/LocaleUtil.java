@@ -20,7 +20,7 @@ import java.text.MessageFormat;
  */
 public class LocaleUtil {
 
-    public static final String PREFIX = "[ <gradient:#8CAAEE:#85C1DC>MiniAnnouncement</gradient> ]";
+    public static final String PREFIX = "[ <gradient:#8CAAEE:#85C1DC>MiniAnnouncement</gradient> ] ";
 
     @NotNull
     public static String color(@Nullable final String msg) {
