@@ -24,7 +24,7 @@ public class CommandHandler {
     private final Set<SubCommand> commands = new HashSet<>();
 
     public CommandHandler() {
-        final PluginCommand command = Bukkit.getPluginCommand("customcooking");
+        final PluginCommand command = Bukkit.getPluginCommand("miniannouncement");
         if (command != null) {
             final CommandExecutor executor = new CommandExecutor();
             command.setExecutor(executor);
