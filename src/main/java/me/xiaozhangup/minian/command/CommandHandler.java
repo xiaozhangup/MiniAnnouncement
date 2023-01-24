@@ -2,6 +2,7 @@ package me.xiaozhangup.minian.command;
 
 import lombok.Getter;
 import me.xiaozhangup.minian.command.sub.MigrateCommand;
+import me.xiaozhangup.minian.command.sub.ReloadCommand;
 import me.xiaozhangup.minian.command.sub.StartCommand;
 import me.xiaozhangup.minian.command.sub.StopCommand;
 import me.xiaozhangup.minian.util.LocaleUtil;
@@ -30,9 +31,10 @@ public class CommandHandler {
             command.setExecutor(executor);
             command.setTabCompleter(executor);
         }
+        register(new MigrateCommand());
+        register(new ReloadCommand());
         register(new StartCommand());
         register(new StopCommand());
-        register(new MigrateCommand());
     }
 
     public void register(final SubCommand cmd) {

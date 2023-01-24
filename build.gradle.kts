@@ -1,3 +1,5 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("java")
@@ -5,7 +7,7 @@ plugins {
 
 description = "me.xiaozhangup.minian"
 group = "me.xiaozhangup.minian"
-version = "1.4"
+version = "1.3"
 
 repositories {
     mavenCentral()
@@ -25,4 +27,8 @@ dependencies {
 
     compileOnly("org.projectlombok:lombok:1.18.24")
     annotationProcessor("org.projectlombok:lombok:1.18.24")
+}
+
+tasks.withType<ShadowJar> {
+    relocate("net.kyori", "me.xiaozhangup.minian.library.net.kyori")
 }
