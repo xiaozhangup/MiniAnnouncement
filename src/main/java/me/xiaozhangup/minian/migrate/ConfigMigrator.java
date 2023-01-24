@@ -135,6 +135,7 @@ public class ConfigMigrator {
             newConfig.set("messages", message);
             newConfig.set("disableWorlds", disableWorlds);
             newConfig.set("time", time);
+            newConfig.save(file);
             MessageConfig.DATA.put("old", message);
         } catch (Throwable ex) {
             LocaleUtil.sendTo(sender, "尝试迁移 messages.yml 时遇到错误, 请检查控制台!");
