@@ -28,7 +28,3 @@ dependencies {
     compileOnly("org.projectlombok:lombok:1.18.24")
     annotationProcessor("org.projectlombok:lombok:1.18.24")
 }
-
-tasks.withType<ShadowJar> {
-    relocate("net.kyori", "me.xiaozhangup.minian.library.net.kyori")
-}
