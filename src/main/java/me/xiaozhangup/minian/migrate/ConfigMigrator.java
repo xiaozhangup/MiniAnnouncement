@@ -57,7 +57,7 @@ public class ConfigMigrator {
             final List<String> time = config.getStringList("time");
             final ActionBarMessage message = new ActionBarMessage(messages, disableWorlds, delay, prefix, time);
             newConfig.set("delay", delay);
-            newConfig.set("messages", message);
+            newConfig.set("messages", messages);
             newConfig.set("disableWorlds", disableWorlds);
             newConfig.set("time", time);
             newConfig.set("prefix", prefix);
@@ -132,7 +132,7 @@ public class ConfigMigrator {
             final Message message = new Message(messages, disableWorlds, delay, prefix, time);
             newConfig.set("delay", delay);
             newConfig.set("prefix", prefix);
-            newConfig.set("messages", message);
+            newConfig.set("messages", messages);
             newConfig.set("disableWorlds", disableWorlds);
             newConfig.set("time", time);
             newConfig.save(file);
