@@ -26,7 +26,7 @@ public class MessageConfig {
 
     public static void loadMessages() {
         DATA.clear();
-        final List<File> files = ConfigUtil.getData("messages");
+        final List<File> files = ConfigUtil.getData("messages", plugin -> plugin.saveResource("actionbars/Example.yml", true));
         for (File file : files) {
             final YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
             final String id = FileUtil.getName(file, ".yml");

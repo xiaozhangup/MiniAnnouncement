@@ -26,7 +26,7 @@ public class ActionBarConfig {
 
     public static void loadActionBars() {
         DATA.clear();
-        final List<File> files = ConfigUtil.getData("actionbars");
+        final List<File> files = ConfigUtil.getData("actionbars", plugin -> plugin.saveResource("actionbars/Example.yml", true));
         for (File file : files) {
             final YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
             final String id = FileUtil.getName(file, ".yml");

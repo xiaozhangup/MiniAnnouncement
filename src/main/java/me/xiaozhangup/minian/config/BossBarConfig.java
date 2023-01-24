@@ -27,7 +27,7 @@ public class BossBarConfig {
 
     public static void loadBossBars() {
         DATA.clear();
-        final List<File> files = ConfigUtil.getData("bossbars");
+        final List<File> files = ConfigUtil.getData("bossbars", plugin -> plugin.saveResource("actionbars/Example.yml", true));
         for (File file : files) {
             final YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
             final String id = FileUtil.getName(file, ".yml");

@@ -27,7 +27,7 @@ public class TitleConfig {
 
     public static void loadTitles() {
         DATA.clear();
-        final List<File> files = ConfigUtil.getData("titles");
+        final List<File> files = ConfigUtil.getData("titles", plugin -> plugin.saveResource("actionbars/Example.yml", true));
         for (File file : files) {
             final YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
             final String id = FileUtil.getName(file, ".yml");
