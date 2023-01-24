@@ -43,7 +43,7 @@ public class ConfigMigrator {
     private static void migrateActionBar(final CommandSender sender) {
         LocaleUtil.sendTo(sender, "尝试迁移 actionbars.yml...");
         try {
-            final YamlConfiguration config = ConfigUtil.getConfig("actionbars/actionbars.yml");
+            final YamlConfiguration config = ConfigUtil.getConfig("actionbars.yml");
             final YamlConfiguration newConfig = new YamlConfiguration();
             final File folder = new File(MiniAnnouncement.getInstance().getDataFolder(), "actionbars");
             final File file = new File(folder, "old.yml");
@@ -74,7 +74,7 @@ public class ConfigMigrator {
     private static void migrateBossBar(final CommandSender sender) {
         LocaleUtil.sendTo(sender, "尝试迁移 bossbars.yml...");
         try {
-            final YamlConfiguration config = ConfigUtil.getConfig("bossbars/bossbars.yml");
+            final YamlConfiguration config = ConfigUtil.getConfig("bossbars.yml");
             final YamlConfiguration newConfig = new YamlConfiguration();
             final File folder = new File(MiniAnnouncement.getInstance().getDataFolder(), "bossbars");
             final File file = new File(folder, "old.yml");
@@ -117,7 +117,7 @@ public class ConfigMigrator {
     private static void migrateMessage(final CommandSender sender) {
         LocaleUtil.sendTo(sender, "尝试迁移 messages.yml...");
         try {
-            final YamlConfiguration config = ConfigUtil.getConfig("messages/messages.yml");
+            final YamlConfiguration config = ConfigUtil.getConfig("messages.yml");
             final YamlConfiguration newConfig = new YamlConfiguration();
             final File folder = new File(MiniAnnouncement.getInstance().getDataFolder(), "messages");
             final File file = new File(folder, "old.yml");
@@ -146,7 +146,7 @@ public class ConfigMigrator {
     private static void migrateTitle(final CommandSender sender) {
         LocaleUtil.sendTo(sender, "尝试迁移 titles.yml...");
         try {
-            final YamlConfiguration config = ConfigUtil.getConfig("titles/titles.yml");
+            final YamlConfiguration config = ConfigUtil.getConfig("titles.yml");
             final YamlConfiguration newConfig = new YamlConfiguration();
             final File folder = new File(MiniAnnouncement.getInstance().getDataFolder(), "titles");
             final File file = new File(folder, "old.yml");
