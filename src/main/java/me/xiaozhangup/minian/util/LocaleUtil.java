@@ -4,9 +4,7 @@ import me.xiaozhangup.minian.MiniAnnouncement;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.text.MessageFormat;
@@ -21,14 +19,6 @@ import java.text.MessageFormat;
 public class LocaleUtil {
 
     public static final String PREFIX = "[ <gradient:#8CAAEE:#85C1DC>MiniAnnouncement</gradient> ] ";
-
-    @NotNull
-    public static String color(@Nullable final String msg) {
-        if (msg == null) {
-            return "";
-        }
-        return ChatColor.translateAlternateColorCodes('&', msg);
-    }
 
     /**
      * 快速发送带有前缀的文本信息.

@@ -45,10 +45,8 @@ public class ActionBarTask {
 
     private void send(final String id, final ActionBarMessage message) {
         if (ActionBarConfig.STOPPED.contains(id)) return;
-        Bukkit.getOnlinePlayers().stream().filter(player -> !message.getDisableWorlds().contains(player.getWorld().getName())).forEach(player -> {
-            MiniAnnouncement.getAdventure().player(player).sendActionBar(
-                    MiniAnnouncement.setPlaceholders(player, message.getPrefix() + message.getMessages().get(ThreadLocalRandom.current().nextInt(message.getMessages().size())))
-            );
-        });
+        Bukkit.getOnlinePlayers().stream().filter(player -> !message.getDisableWorlds().contains(player.getWorld().getName())).forEach(player -> MiniAnnouncement.getAdventure().player(player).sendActionBar(
+                MiniAnnouncement.setPlaceholders(player, message.getPrefix() + message.getMessages().get(ThreadLocalRandom.current().nextInt(message.getMessages().size())))
+        ));
     }
 }
