@@ -1,65 +1,73 @@
 package me.xiaozhangup.minian;
 
+import lombok.Getter;
+import me.clip.placeholderapi.PlaceholderAPI;
+import me.xiaozhangup.minian.command.CommandHandler;
+import me.xiaozhangup.minian.config.ActionBarConfig;
+import me.xiaozhangup.minian.config.BossBarConfig;
+import me.xiaozhangup.minian.config.MessageConfig;
+import me.xiaozhangup.minian.config.TitleConfig;
+import me.xiaozhangup.minian.service.Metrics;
+import me.xiaozhangup.minian.task.ActionBarTask;
+import me.xiaozhangup.minian.task.BossBarTask;
+import me.xiaozhangup.minian.task.MessageTask;
+import me.xiaozhangup.minian.task.TitleTask;
+import me.xiaozhangup.minian.util.LocaleUtil;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.Plugin;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
+public final class MiniAnnouncement extends JavaPlugin {
 
-public class MiniAnnouncement extends JavaPlugin {
-
-    public static MiniMessage mm = MiniMessage.miniMessage();
-    public static Plugin plugin;
-    public static List<Component> messages = new ArrayList<>();
-    public static Long time = 1200L;
-    public static Component prefix = Component.text("");
-    public static Component reload = mm.deserialize("<white>插件已成功重载</white>");
+    @Getter
+    private static MiniAnnouncement instance;
+    @Getter
     private static BukkitAudiences adventure;
-
-    public static BukkitAudiences adventure() {
-        if (adventure == null) {
-            throw new IllegalStateException("Tried to access Adventure when the plugin was disabled!");
-        }
-        return adventure;
-    }
+    @Getter
+    private static CommandHandler commandHandler;
+    private static final MiniMessage miniMessage = MiniMessage.miniMessage();
 
     @Override
     public void onEnable() {
-        plugin = this;
-        config();
+        instance = this;
         adventure = BukkitAudiences.create(this);
-        Bukkit.getScheduler().runTaskTimerAsynchronously(this, new Runner(), 0L, time);
-        Bukkit.getPluginCommand("mareload").setExecutor((sender, command, label, args) -> {
-            if (sender.isOp()) {
-                adventure().sender(sender).sendMessage(prefix.append(reload));
-                Bukkit.getPluginManager().disablePlugin(this);
-                Bukkit.getPluginManager().enablePlugin(this);
-            }
-            return true;
-        });
+        ConfigReader.loadConfig();
+        ActionBarConfig.loadActionBars();
+        BossBarConfig.loadBossBars();
+        MessageConfig.loadMessages();
+        TitleConfig.loadTitles();
+        new ActionBarTask();
+        new BossBarTask();
+        new MessageTask();
+        new TitleTask();
+        commandHandler = new CommandHandler();
+        if (ConfigReader.B_STATS) {
+            new Metrics(this, 17243);
+            LocaleUtil.sendToConsole("已启用 bStats 数据统计.");
+            LocaleUtil.sendToConsole("若您需要禁用此功能, 一般情况下可于配置文件 config.yml 中编辑或新增 \"bStats: false\" 关闭此功能.");
+        } else {
+            LocaleUtil.sendToConsole("bStats 数据统计已被禁用.");
+        }
     }
 
     @Override
     public void onDisable() {
+        getServer().getScheduler().cancelTasks(this);
         if (adventure != null) {
             adventure.close();
             adventure = null;
         }
     }
 
-    public void config() {
-        saveDefaultConfig();
-        reloadConfig();
-        messages.clear();
-
-        time = getConfig().getLong("delay");
-        prefix = mm.deserialize(getConfig().getString("prefix"));
-        getConfig().getStringList("messages").forEach(s -> {
-            messages.add(prefix.append(mm.deserialize(s)));
-        });
+    @NotNull
+    public static Component setPlaceholders(@NotNull Player player, @NotNull String origin) {
+        String result = origin;
+        if (instance.getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            result = PlaceholderAPI.setPlaceholders(player, result);
+        }
+        return miniMessage.deserialize(result);
     }
 }

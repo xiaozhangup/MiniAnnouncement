@@ -1,0 +1,18 @@
+delay: 60 #公告的间隔,秒
+prefix: "<dark_gray>[<color:#abe6ff>公告</color>]</dark_gray> " #公告的前缀,如果不需要你可以直接留空,也就是""
+messages:
+  - fadeOut: 500
+    fadeIn: 500
+    subtitle: <rainbow>你可以发送彩虹字体,就像这样</rainbow>
+    stayOnScreen: 3000
+    title: <yellow>这是第一个普通的颜色公告内容</yellow>
+  - fadeOut: 500
+    fadeIn: 500
+    subtitle: <rainbow>你可以发送彩虹字体,就像这样</rainbow>
+    stayOnScreen: 3000
+    title: <yellow>这是第二个普通的颜色公告内容</yellow>
+disableWorlds: #关闭的世界,玩家所处此世界时不显示该自动公告
+  - "yourWorldHere"
+time:
+  - "12:50:00"
+  - "23:13:00"
